@@ -12,41 +12,18 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
-numbers1 = []
-numbers2 = []
-for number in texts:
-    numbers1.append(number[0])
-    numbers2.append(number[1])
 
-numbers3 = []
-numbers4 = []
-for number in calls:
-    numbers3.append(number[0])
-    numbers4.append(number[1])
-
-numbers = set(numbers1 + numbers2 + numbers3 + numbers4)
-
-fixed_line1 = 0
-fixed_line2 = 0
-mobile = 0
-telemarketer = 0
-for num in numbers:
-    if num[1:4] == "080":
-        fixed_line1 += 1
-    elif num[1] == "0":
-        fixed_line2 += 1
-    elif num[0] == "7" or num[0] == "8" or num[0] == "9":
-        mobile += 1
-    elif num[:3] == "140":
-        telemarketer += 1
-dic = {"Fixed lines" : fixed_line1 + fixed_line2,
-"Mobiles" : mobile,
- "Telemarkers" : telemarketer}
-
+count = 0
 print("The numbers called by people in Bangalore have codes:")
-print(dic)
+for call in calls:
+    if call[0][1:4] == "080":
+        if call[1][1] == "0" or call[1][0] == "7" or call[1][0] == "8" or call[1][0] == "9" or call[1][:3] == "140":
+            print(call[0])
+            count += 1
 
-per = fixed_line1/(fixed_line1 + fixed_line2 + mobile + telemarketer)
+
+
+per = (count / len(calls))
 print("{0} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(per, 2)))
 
 
