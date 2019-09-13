@@ -13,18 +13,16 @@ with open('calls.csv', 'r') as f:
     calls = list(reader)
 
 numbers1 = []
-numbers2 = []
+
 for number in texts:
     numbers1.append(number[0])
-    numbers2.append(number[1])
 
 numbers3 = []
-numbers4 = []
+
 for number in calls:
     numbers3.append(number[0])
-    numbers4.append(number[1])
 
-numbers = set(numbers1 + numbers2 + numbers3 + numbers4)
+numbers = set(numbers1 + numbers3)
 
 print("These numbers could be telemarketers: ")
 for num in numbers:
