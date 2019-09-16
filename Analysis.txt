@@ -1,0 +1,22 @@
+Task0
+O(1)
+
+
+Task1
+O(4N) -> O(N)
+
+
+
+Task2
+O(3N) -> O(N)
+
+
+
+Task3
+O(N)
+
+
+
+
+Task4
+O(N)

@@ -12,21 +12,20 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
-numbers1 = []
 
-for number in texts:
-    numbers1.append(number[0])
 
 numbers3 = []
 
 for number in calls:
     numbers3.append(number[0])
 
-numbers = set(numbers1 + numbers3)
+numbers = set(numbers3)
 
 print("These numbers could be telemarketers: ")
 for num in numbers:
-    if num[:3] == "140":
+    if num[0] == "(":
+        print(num)
+    elif num[5:6] == " ":
         print(num)
 
         
