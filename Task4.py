@@ -14,21 +14,32 @@ with open('calls.csv', 'r') as f:
 
 
 
-numbers3 = []
+numbers1 = []
+numbers2 = []
+for number in texts:
+    numbers1.append(number[0])
+    numbers2.append(number[1])
 
+
+numbers3 = []
+numbers4 = []
 for number in calls:
     numbers3.append(number[0])
+    numbers4.append(number[1])
 
-numbers = set(numbers3)
+n1 = set(numbers1 + numbers2 + numbers4)
+n2 = set(numbers3)
+
+tel = []
+for num in n2:
+    if num not in n1:
+        tel.append(num)
 
 print("These numbers could be telemarketers: ")
-for num in numbers:
-    if num[0] == "(":
-        print(num)
-    elif num[5:6] == " ":
-        print(num)
+for i in sorted(tel):
+    print(i)
 
-        
+
 """
 TASK 4:
 The telephone company want to identify numbers that might be doing
