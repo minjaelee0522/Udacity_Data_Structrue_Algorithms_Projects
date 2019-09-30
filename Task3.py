@@ -12,19 +12,33 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
+codes = []
+for call in calls:
+    if call[0][:5] == "(080)":
+        if call[1][:2] == "(0":
+            codes.append(call[1].split(')')[0] + ')')
+        elif call[1][0] == "7" or "8" or "9":
+            codes.append(call[1][:4])
+        elif call[1][3] == "140":
+            codes.append(call[1][3])
+
+print("The numbers called by people in Bangalore have codes:")
+set_codes = set(codes)
+for i in set_codes:
+    print(i)
+
+bang = []
+for call in calls:
+    if call[0][:5] == "(080)":
+        bang.append(call[0][:5])
 
 count = 0
-print("The numbers called by people in Bangalore have codes:")
 for call in calls:
-    if call[0][1:4] == "080":
-        if call[1][1] == "0" or call[1][0] == "7" or call[1][0] == "8" or call[1][0] == "9" or call[1][:3] == "140":
-            print(call[0])
+    if call[0][:5] == "(080)":
+        if call[1][:5] == "(080)":
             count += 1
+print("\n{0} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(count/len(bang)*100, 2)))
 
-
-
-per = (count / len(calls))
-print("{0} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(per, 2)))
 
 
 """
