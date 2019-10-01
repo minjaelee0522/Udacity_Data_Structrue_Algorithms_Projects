@@ -30,6 +30,7 @@ for number in calls:
 n1 = set(numbers1 + numbers2 + numbers4)
 n2 = set(numbers3)
 
+
 tel = []
 for num in n2:
     if num not in n1:

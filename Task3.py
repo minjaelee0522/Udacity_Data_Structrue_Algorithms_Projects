@@ -24,8 +24,9 @@ for call in calls:
 
 print("The numbers called by people in Bangalore have codes:")
 set_codes = set(codes)
-for i in set_codes:
+for i in sorted(set_codes):
     print(i)
+
 
 bang = []
 for call in calls:
