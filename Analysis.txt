@@ -1,17 +1,48 @@
 Task0
-First record of texts, <incoming number> texts <answering number> at time <time> -> O(1)
-Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds -> O(5213)
+
+import csv
+with open('texts.csv', 'r') as f:
+    reader = csv.reader(f)
+    texts = list(reader)
+    print("First record of texts, {0} texts {1} at time {2}".format(texts[0][1], texts[0][0], texts[0][2]))      -> O(1)
+
+
+with open('calls.csv', 'r') as f:
+    reader = csv.reader(f)
+    calls = list(reader)
+    print("Last record of calls, {0} calls {1} at time {2}, lasting {3} seconds".format(calls[-1][1], calls[-1][0], calls[-1][2], calls[-1][3]))   -> O(5213) -> O(1)
+
+
 
 
 
 
 Task1
 
-numbers1 -> O(9072)
-numbers2 -> O(9072)
-numbers3 -> O(5213)
-numbers4 -> O(5213)
-TOTAL -> O(28570)
+numbers1 = []
+numbers2 = []
+for number in texts:
+    numbers1.append(number[0]) -> O(N)
+    numbers2.append(number[1]) -> O(N)
+
+-> O(2N)
+
+numbers3 = []
+numbers4 = []
+for number in calls:
+    numbers3.append(number[0]) -> O(N)
+    numbers4.append(number[1]) -> O(N)
+
+-> O(2N)
+
+-> O(4N) -> O(N)
+
+numbers = set(numbers1 + numbers2 + numbers3 + numbers4)
+
+print("There are {0} different telephone numbers in the records.".format(len(numbers)))
+
+
+
 
 
 
@@ -21,20 +52,20 @@ TOTAL -> O(28570)
 Task2
 
 records = {}
-for call in calls: -> O(9072)
+for call in calls: -> O(N)
     if call[0] in records:
-        records[call[0]] += int(call[3])
+        records[call[0]] += int(call[3]) 
     else:
-        records[call[0]] = int(call[3])
+        records[call[0]] = int(call[3])  
     if call[1] in records:
-        records[call[1]] += int(call[3])
+        records[call[1]] += int(call[3])  
     else:
-        records[call[1]] = int(call[3])
+        records[call[1]] = int(call[3])   
 
 longest = max(records, key=lambda i:records[i])
+print("{0} spent the longest time, {1} seconds, on the phone during September 2016.".format(longest, records[longest]))
 
-O(9072)
-
+-> O(N)
 
 
 
@@ -47,9 +78,9 @@ O(9072)
 
 Task3
 
-
 codes = []
-for call in calls:   -> O(9072)
+count = 0
+for call in calls:         -> O(N)
     if call[0][:5] == "(080)":
         if call[1][:2] == "(0":
             codes.append(call[1].split(')')[0] + ')')
@@ -57,26 +88,28 @@ for call in calls:   -> O(9072)
             codes.append(call[1][:4])
         elif call[1][3] == "140":
             codes.append(call[1][3])
+        elif call[1][:5] == "(080)":
+            count += 1
 
 print("The numbers called by people in Bangalore have codes:")
-set_codes = set(codes)
-for i in set_codes: -> O(39)
+set_codes = codes
+for i in sorted(set_codes):   -> O(N)
     print(i)
 
+
 bang = []
-for call in calls: -> O(9072)
+for call in calls:   -> O(N)
     if call[0][:5] == "(080)":
         bang.append(call[0][:5])
 
-count = 0
-for call in calls: -> O(9072)
-    if call[0][:5] == "(080)":
-        if call[1][:5] == "(080)":
-            count += 1
+
+
 print("\n{0} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(count/len(bang)*100, 2)))
 
 
-O(9072 + 39 + 9072 + 9072) = 
+-> O(3N) -> O(N)
+
+
 
 
 
@@ -90,29 +123,31 @@ O(9072 + 39 + 9072 + 9072) =
 
 Task4
 
-
 numbers1 = []
 numbers2 = []
-for number in texts:
-    numbers1.append(number[0])  ->  O(9072)
-    numbers2.append(number[1])  ->  O(9072)
+for number in texts:  -> O(2N)
+    numbers1.append(number[0])
+    numbers2.append(number[1])
 
 
 numbers3 = []
 numbers4 = []
-for number in calls:
-    numbers3.append(number[0])  -> O(5213)
-    numbers4.append(number[1])  -> O(5213)
+for number in calls:    -> O(2N)
+    numbers3.append(number[0])
+    numbers4.append(number[1])
 
 n1 = set(numbers1 + numbers2 + numbers4)
 n2 = set(numbers3)
 
+
 tel = []
-for num in n2:   ->  O(479)
-    if num not in n1:   ->  o(527)
+for num in n2:    -> O(N)
+    if num not in n1:
         tel.append(num)
 
 print("These numbers could be telemarketers: ")
-for i in sorted(tel):  -> o(43)
+for i in sorted(tel):       -> O(N)
     print(i)
- O(9072 + 9072 + 5213 + 5213 + 479 + 527 + 43) = O(29619)
+
+
+-> O(6N)    -> O(N)
