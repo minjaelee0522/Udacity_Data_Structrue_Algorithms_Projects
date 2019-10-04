@@ -37,12 +37,12 @@ for number in calls:
 
 -> O(4N) -> O(N)
 
-numbers = set(numbers1 + numbers2 + numbers3 + numbers4)
+numbers = set(numbers1 + numbers2 + numbers3 + numbers4) -> O(nlogn) 
 
 print("There are {0} different telephone numbers in the records.".format(len(numbers)))
 
 
-
+O(n) + O(nlogn)
 
 
 
@@ -93,7 +93,7 @@ for call in calls:         -> O(N)
 
 print("The numbers called by people in Bangalore have codes:")
 set_codes = codes
-for i in sorted(set_codes):   -> O(N)
+for i in sorted(set_codes):   -> O(n) + O(nlogn)
     print(i)
 
 
@@ -107,7 +107,7 @@ for call in calls:   -> O(N)
 print("\n{0} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(count/len(bang)*100, 2)))
 
 
--> O(3N) -> O(N)
+-> O(3N) + O(nlogn)
 
 
 
@@ -136,8 +136,8 @@ for number in calls:    -> O(2N)
     numbers3.append(number[0])
     numbers4.append(number[1])
 
-n1 = set(numbers1 + numbers2 + numbers4)
-n2 = set(numbers3)
+n1 = set(numbers1 + numbers2 + numbers4) -> O(nlogn)
+n2 = set(numbers3)                       -> O(nlogn)
 
 
 tel = []
@@ -150,4 +150,4 @@ for i in sorted(tel):       -> O(N)
     print(i)
 
 
--> O(6N)    -> O(N)
+-> O(6N) + O(2nlogn)
