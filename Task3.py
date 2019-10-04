@@ -26,8 +26,8 @@ for call in calls:
             count += 1
 
 print("The numbers called by people in Bangalore have codes:")
-set_codes = codes
-for i in sorted(set_codes):
+
+for i in sorted(codes):
     print(i)
 
 
