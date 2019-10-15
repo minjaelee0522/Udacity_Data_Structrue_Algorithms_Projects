@@ -1,7 +1,7 @@
 Task0
 
 To obtain this answer, I don't need to iterate because it requires first line and last line. These index are 1, -1.
-So it is O(2), in resuut, O(1).
+So it is O(2), in result, O(1).
 
 
 
