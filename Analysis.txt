@@ -43,10 +43,10 @@ It is 2*O(n) + o(1). In result, answer is O(n).
 
 Task3
 
-To obtain this answer, first for loop O(n), first 'if' has slices in for loop is O(n), and 4'if' have slices in first 'if'. Sum of notation is O(n)*O(n)*O(4n)=O(4n^3).
-And second for loop has sorted funtion, it is O(n + nlogn).
-The third for loop has slice and append, it is O(n^2+1).  
-Sum of notation is O(4n^3) + O(n + nlogn) + O(n^2 + 1), finallys O(n^3)
+To obtain this answer, first for loop has append O(n+1).
+And second for loop has sorted and set funtion, it is O(n + nlogn + 1).
+The third for loop has append, it is O(n+1).  
+Sum of notation is O(nlogn + 3n + 3), finallys O(nlogn)
 
 
 
@@ -62,4 +62,4 @@ Task4
 
 
 To obtain this answer, I need to iterate 4 times for loops. It is 4*O(n). I used 'not in', it accounts for O(n). And I applied 2 times set functions, 5 times append functions, and 1 time sorted function. 
-set function is O(1) * 2, append function is also O(1) * 5, sorted function is O(nlogn). Sum of notations is 5*O(n) + 7*O(1) + O(nlogn), in result, answer is O(n). 
+set function is O(1) * 2, append function is also O(1) * 5, sorted function is O(nlogn). Sum of notations is 5*O(n) + 7*O(1) + O(nlogn), in result, answer is O(nlogn). 

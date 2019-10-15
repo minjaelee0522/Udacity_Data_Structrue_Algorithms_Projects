@@ -27,7 +27,7 @@ for call in calls:
 
 print("The numbers called by people in Bangalore have codes:")
 
-for i in sorted(codes):
+for i in sorted(set(codes)):
     print(i)
 
 
