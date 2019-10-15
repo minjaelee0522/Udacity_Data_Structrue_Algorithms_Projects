@@ -46,7 +46,7 @@ Task3
 To obtain this answer, first for loop has append O(n+1).
 And second for loop has sorted and set funtion, it is O(n + nlogn + 1).
 The third for loop has append, it is O(n+1).  
-Sum of notation is O(nlogn + 3n + 3), finallys O(nlogn)
+Sum of notation is O(nlogn + 3n + 3), finally O(nlogn)
 
 
 
